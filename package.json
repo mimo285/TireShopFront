@@ -2,12 +2,13 @@
   "name": "emina-project",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:emina-project": "node dist/emina-project/server/server.mjs"
+  "ng": "ng",
+  "start": "ng serve",
+  "build": "ng build --configuration production",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test",
+  "serve:ssr:emina-project": "node dist/emina-project/server/server.mjs",
+  "postbuild": "copy src\\_redirects dist\\emina-project\\_redirects"
   },
   "private": true,
   "dependencies": {
