@@ -7,8 +7,7 @@
   "build": "ng build --configuration production",
   "watch": "ng build --watch --configuration development",
   "test": "ng test",
-  "serve:ssr:emina-project": "node dist/emina-project/server/server.mjs",
-  "postbuild": "cp src/_redirects dist/emina-project/_redirects"
+  "serve:ssr:emina-project": "node dist/emina-project/server/server.mjs"
   },
   "private": true,
   "dependencies": {
