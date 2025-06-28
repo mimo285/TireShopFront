@@ -1,0 +1,167 @@
+<!-- Start Hero Area -->
+<section class="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 custom-padding-right">
+                <div class="slider-head">
+                    <!-- Start Hero Slider -->
+                    <div class="hero-slider">
+                        <!-- Start Single Slider -->
+                        <div class="single-slider"
+                            style="background-image: url(https://s19532.pcdn.co/wp-content/uploads/2020/08/Sourcebook-Passenger-Tires.jpg);">
+                            <div class="content">
+                                <h2><span>No restocking fee ($35 savings)</span>
+                                    Best Quality Tires
+                                </h2>
+                                <p>Explore our rubost shop with the best quality tires for your vehicle.
+                                    Don't settle. Shop at Tire Center</p>
+                                <h3><span>From</span> $220.99</h3>
+                                <div class="button">
+                                    <a href="/shop" class="btn">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Slider -->
+
+                    </div>
+                    <!-- End Hero Slider -->
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
+                        <!-- Start Small Banner -->
+                        <div class="hero-small-banner"
+                            style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Tire_tread.jpg');">
+                            <div class="content">
+                                <h2 style="color: aliceblue;">
+                                    <span>New line</span>
+                                    Truck Tires
+                                </h2>
+                                <h3>From $259.99</h3>
+                            </div>
+                        </div>
+                        <!-- End Small Banner -->
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-12">
+                        <!-- Start Small Banner -->
+                        <div class="hero-small-banner style2">
+                            <div class="content">
+                                <h2>Best Deals!</h2>
+                                <p>Saving up with our online store items.</p>
+                                <div class="button">
+                                    <a class="btn" href="/shop">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start Small Banner -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Hero Area -->
+<!-- Start Trending Product Area -->
+<section class="trending-product section" style="margin-top: 12px;">
+    <div class="container">
+        <div class="row">
+            <div class="row justify-content-center text-center">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Trending Product</h2>
+                    <p>Explore the most popular products today with prices you won't find anywhere else!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 custom-col" *ngFor="let product of products | slice:0:3">
+                <!-- Start Single Product -->
+                <app-item [product]="product"></app-item>
+                <!-- End Single Product -->
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- End Trending Product Area -->
+
+
+
+<!-- Start Banner Area -->
+<section class="banner section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="single-banner" style="background-image:url('https://www.kbb.com/wp-content/uploads/2021/06/car-tires-radius-numbers-e1682107739939.jpeg?w=918')">
+                    <div class="content">
+                        <h2 style="color:aliceblue">Goodyear</h2>
+                        <p style="color:aliceblue">More people ride on Goodyear tires  <br>than on any other kind. </p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="single-banner custom-responsive-margin"
+                    style="background-image:url('https://trailtire.com/wp-content/uploads/2021/12/Michelin-Tires-at-Trail-Tire.jpg')">
+                    <div class="content">
+                        <h2 style="color:aliceblue">Michelin</h2>
+                        <p style="color:aliceblue">We care about giving people <br>a better way forward.
+                            </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!-- Start Shipping Info -->
+<section class="shipping-info">
+    <div class="container">
+        <ul>
+            <!-- Free Shipping -->
+            <li>
+                <div class="media-icon">
+                    <i class="lni lni-delivery"></i>
+                </div>
+                <div class="media-body">
+                    <h5>Free Shipping</h5>
+                    <span>On order over $99</span>
+                </div>
+            </li>
+            <!-- Money Return -->
+            <li>
+                <div class="media-icon">
+                    <i class="lni lni-support"></i>
+                </div>
+                <div class="media-body">
+                    <h5>24/7 Support.</h5>
+                    <span>Live Chat Or Call.</span>
+                </div>
+            </li>
+            <!-- Support 24/7 -->
+            <li>
+                <div class="media-icon">
+                    <i class="lni lni-credit-cards"></i>
+                </div>
+                <div class="media-body">
+                    <h5>Online Payment.</h5>
+                    <span>Secure Payment Services.</span>
+                </div>
+            </li>
+            <!-- Safe Payment -->
+            <li>
+                <div class="media-icon">
+                    <i class="lni lni-reload"></i>
+                </div>
+                <div class="media-body">
+                    <h5>Easy Return.</h5>
+                    <span>Hassle Free Shopping.</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+

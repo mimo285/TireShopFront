@@ -1,0 +1,20 @@
+
+
+<header class="header navbar-area">
+        <div class="row align-items-center"><!-- Start Main Menu Search -->
+            <div class="main-menu-search">
+                <!-- navbar search start -->
+                <div class="navbar-search search-style-5">
+                    <div class="search-input">
+                        <input type="text"
+                        placeholder="Search"
+                        [(ngModel)]="searchQuery"
+                        (ngModelChange)="onSearch()"
+                      />
+                    </div>
+                    <div class="search-btn">
+                        <button (click)="onSearch()"><i class="lni lni-search-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>

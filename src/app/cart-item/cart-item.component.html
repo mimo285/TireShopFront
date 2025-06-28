@@ -1,0 +1,50 @@
+<div class="cart-single-list">
+    <div class="row align-items-center">
+      <div class="col-lg-1 col-md-1 col-12 cart-image">
+        
+        
+          <img [src]="product?.product.imageUrl" alt="Product Image">
+     
+      </div>
+      <div class="col-lg-4 col-md-3 col-12">
+        <h5 class="product-name">
+         
+          {{ product?.product.name }}
+        </h5>
+        <p class="product-des">
+          <span><em>Brand:</em> {{ product?.product.brand.brandName }}</span>
+          <span><em>Category:</em> {{ product?.product.category.name }}</span>
+          <span><em>Condition:</em> {{ product?.product.condition }}</span>
+        </p>
+      </div>
+      <div class="col-lg-2 col-md-2 col-12">
+        <div class="form-group quantity">
+            <input 
+            type="number" 
+            class="form-control" 
+            [(ngModel)]="quantity" 
+            (change)="updateQuantity()"
+            [min]="1" 
+            [max]="product?.product.stock"
+            [ngClass]="{'is-invalid': quantity < 1 || quantity > product?.product.stock}"
+          >
+          <div *ngIf="quantity < 1" class="text-danger">
+            Please enter a quantity of 1 or more...
+          </div>
+          <div *ngIf="quantity > product?.product.stock" class="text-danger">
+            Quantity exceeds available stock!
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-12">
+        <p>${{ product?.product.price.toFixed(2) }}</p>
+      </div>
+      <div class="col-lg-2 col-md-2 col-12">
+        <p>${{ (product?.product.price * product?.quantity).toFixed(2) }}</p> 
+      </div>
+      <div class="col-lg-1 col-md-2 col-12">
+        <button (click)="removeFromCart(product?.product.productId)">X</button>
+      </div>
+    </div>
+  </div>
+  

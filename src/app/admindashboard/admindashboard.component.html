@@ -1,0 +1,358 @@
+<body>
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="breadcrumbs-content">
+                        <h1 class="page-title">Admin Dashboard</h1>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-nav">
+                        <li><a routerLink="/hero"><i class="lni lni-home"></i> Home</a></li>
+                        <li>Admin Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <!-- Product Management Section -->
+        <section class="product-management">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Search Bar -->
+                    <div class="col-lg-12 search-bar">
+                        <input
+                            type="text"
+                            placeholder="Search for products..."
+                            [(ngModel)]="searchQuery"
+                            (ngModelChange)="onSearchChange()"
+                        />
+                        <button (click)="onSearch()">Search</button>
+                    </div>
+
+                    <!-- Add Product Button at the top -->
+                    <div class="col-lg-12">
+                        <button class="btn btn-primary" (click)="openAddProductDialog()">Add Product</button>
+                    </div>
+
+                    <!-- Product List Table -->
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of paginatedProducts" [ngClass]="{'deleted-row': product.isDeleted}">
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ product.price }}</td>
+                                        <td>{{ product.category.name }}</td>
+                                        <td>{{ product.stock }}</td>
+                                        <td class="col-actions">
+                                            
+                                            <button *ngIf="product.isDeleted" class="btn btn-primary" (click)="restoreProduct(product.productId)">
+                                                <i class="fa-solid fa-undo" style="font-size: 16px;" ></i> Restore
+                                            </button>
+
+                                            <button *ngIf="!product.isDeleted" class="btn btn-warning" (click)="openModifyProductDialog(product)">
+                                                <i class="fa-solid fa-pencil" style="font-size: 16px;"></i> Modify
+                                            </button>
+                                        
+                                            <button *ngIf="!product.isDeleted" class="btn btn-danger" (click)="openDeleteProductDialog(product)">
+                                                <i class="fa-solid fa-trash" style="font-size: 16px;"></i> Delete
+                                            </button>
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="col-lg-12">
+                        <div class="pagination">
+                            <button 
+                                *ngFor="let page of pages" 
+                                [class.active]="currentPage === page" 
+                                (click)="changePage(page)">
+                                {{ page }}
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Products per page selection -->
+                    <div class="col-lg-12">
+                        <div class="items-per-page-dropdown">
+                            <label for="itemsPerPage">Items per page: </label>
+                            <select [(ngModel)]="itemsPerPage" (change)="updateItemsPerPage()">
+                                <option value="6">6</option>
+                                <option value="9">9</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+
+                    <!-- Modify Product Modal -->
+                    <div *ngIf="isModifyProductModalOpen" class="modal">
+                        <div class="modal-content">
+                        <h2>Modify Product</h2>
+                        <form (ngSubmit)="modifyProduct(currentProduct.productId)" #modifyProductForm="ngForm">
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="modifyProductName">Product Name</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="currentProduct.name"
+                                name="modifyProductName"
+                                required
+                                #modifyProductName="ngModel"
+                                />
+                                <div *ngIf="modifyProductName.invalid && (modifyProductName.touched || formSubmitted)" class="error-message">
+                                Product name is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="modifyProductPrice">Price</label>
+                                <input
+                                type="number"
+                                [(ngModel)]="currentProduct.price"
+                                name="modifyProductPrice"
+                                required
+                                #modifyProductPrice="ngModel"
+                                />
+                                <div *ngIf="modifyProductPrice.invalid && (modifyProductPrice.touched || formSubmitted)" class="error-message">
+                                Price is required.
+                                </div>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="modifyProductStock">Stock Quantity</label>
+                                <input
+                                type="number"
+                                [(ngModel)]="currentProduct.stock"
+                                name="modifyProductStock"
+                                required
+                                #modifyProductStock="ngModel"
+                                />
+                                <div *ngIf="modifyProductStock.invalid && (modifyProductStock.touched || formSubmitted)" class="error-message">
+                                Stock quantity is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="modifyProductCategory">Category</label>
+                                <select [(ngModel)]="currentProduct.categoryId" name="modifyProductCategory" required>
+                                <option *ngFor="let category of categories" [value]="category.id">
+                                    {{ category.name }}
+                                </option>
+                                </select>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="modifyProductBrand">Brand</label>
+                                <select [(ngModel)]="currentProduct.brandId" name="modifyProductBrand" required>
+                                <option *ngFor="let brand of brands" [value]="brand.id">
+                                    {{ brand.name }}
+                                </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="modifyProductCondition">Condition</label>
+                                <select [(ngModel)]="currentProduct.condition" name="modifyProductCondition" required>
+                                <option *ngFor="let condition of conditions" [value]="condition.value">
+                                    {{ condition.name }}
+                                </option>
+                                </select>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="modifyProductDescription">Description</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="currentProduct.description"
+                                name="modifyProductDescription"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="modifyProductImage">Image URL</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="currentProduct.imageUrl"
+                                name="modifyProductImage"
+                                />
+                            </div>
+                            </div>
+                    
+                            <div class="form-actions">
+                            <button
+                                type="submit"
+                                
+                                (click)="formSubmitted = true"
+                            >
+                                Save Changes
+                            </button>
+                            <button type="cancel" (click)="closeModal()">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Delete Confirmation Modal -->
+                    <div *ngIf="isDeleteProductModalOpen" class="modal">
+                        <div class="modal-content-delete">
+                        <h4>Are you sure you want to delete this product?</h4>
+                       
+                        <button type="button" (click)="deleteProduct(currentProduct.productId)">Yes, Delete</button>
+                        <button type="cancel" (click)="closeModal()">Cancel</button>
+                   
+                        </div>
+                    </div>
+                    <!-- Add Product Modal -->
+                    <div *ngIf="isAddProductModalOpen" class="modal">
+                        <div class="modal-content">
+                        <h2>Add Product</h2>
+                        <form (ngSubmit)="addProduct()" #addProductForm="ngForm">
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="newProduct.name"
+                                name="productName"
+                                required
+                                #productName="ngModel"
+                                />
+                                <div *ngIf="productName.invalid && (productName.touched || formSubmitted)" class="error-message">
+                                Product name is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Price</label>
+                                <input
+                                type="number"
+                                [(ngModel)]="newProduct.price"
+                                name="productPrice"
+                                required
+                                #productPrice="ngModel"
+                                />
+                                <div *ngIf="productPrice.invalid && (productPrice.touched || formSubmitted)" class="error-message">
+                                Price is required.
+                                </div>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="productDescription">Description</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="newProduct.description"
+                                name="productDescription"
+                                required
+                                #productDescription="ngModel"
+                                />
+                                <div *ngIf="productDescription.invalid && (productDescription.touched || formSubmitted)" class="error-message">
+                                Description is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productImageUrl">Image URL</label>
+                                <input
+                                type="text"
+                                [(ngModel)]="newProduct.imageUrl"
+                                name="productImageUrl"
+                                required
+                                #productImageUrl="ngModel"
+                                />
+                                <div *ngIf="productImageUrl.invalid && (productImageUrl.touched || formSubmitted)" class="error-message">
+                                Image URL is required.
+                                </div>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="productCondition">Condition</label>
+                                <select [(ngModel)]="newProduct.condition" name="productCondition" required>
+                                <option value="" disabled selected>Select Condition</option>
+                                <option *ngFor="let condition of conditions" [value]="condition.value">
+                                    {{ condition.name }}
+                                </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category</label>
+                                <select [(ngModel)]="newProduct.categoryId" name="productCategory" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option *ngFor="let category of categories" [value]="category.id">
+                                    {{ category.name }}
+                                </option>
+                                </select>
+                            </div>
+                            </div>
+                    
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="productBrand">Brand</label>
+                                <select [(ngModel)]="newProduct.brandId" name="productBrand" required>
+                                <option value="" disabled selected>Select Brand</option>
+                                <option *ngFor="let brand of brands" [value]="brand.id">
+                                    {{ brand.name }}
+                                </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock Quantity</label>
+                                <input
+                                type="number"
+                                [(ngModel)]="newProduct.stock"
+                                name="productStock"
+                                required
+                                #productStock="ngModel"
+                                />
+                                <div *ngIf="productStock.invalid && (productStock.touched || formSubmitted)" class="error-message">
+                                Stock quantity is required.
+                                </div>
+                            </div>
+                            </div>
+                    
+                            <div class="form-actions">
+                            <button
+                                type="submit"
+                                
+                                >
+                                Save
+                            </button>
+                            <button type="cancel" (click)="closeModal()">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://kit.fontawesome.com/44d13736ea.js" crossorigin="anonymous"></script>
+</body>

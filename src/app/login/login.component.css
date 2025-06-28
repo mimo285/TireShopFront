@@ -1,0 +1,526 @@
+/* Bread Crumbs */
+
+.breadcrumbs {
+    position: relative;
+    padding: 30px 0;
+    z-index: 2;
+    text-align: left;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .breadcrumbs {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .breadcrumbs {
+        padding: 30px;
+    }
+}
+
+.breadcrumbs .breadcrumbs-content {
+    position: relative;
+    text-align: left;
+}
+
+.breadcrumbs .breadcrumbs-content .page-title {
+    font-size: 18px;
+    color: #081828;
+    font-weight: 600;
+    position: relative;
+    line-height: 28px;
+    text-transform: capitalize;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .breadcrumbs .breadcrumbs-content .page-title {
+        font-size: 17px;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 767px) {
+    .breadcrumbs .breadcrumbs-content .page-title {
+        font-size: 16px;
+        text-align: center;
+        line-height: 26px;
+    }
+}
+
+.breadcrumbs .breadcrumbs-content .breadcrumb-nav {
+    background: transparent;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.breadcrumbs .breadcrumb-nav {
+    text-align: right;
+}
+
+@media (max-width: 767px) {
+    .breadcrumbs .breadcrumb-nav {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+.breadcrumbs .breadcrumb-nav li {
+    display: inline-block;
+    position: relative;
+    padding-right: 14px;
+    margin-right: 14px;
+    text-transform: capitalize;
+}
+
+.breadcrumbs .breadcrumb-nav li:after {
+    content: "\ea62";
+    font-family: lineIcons;
+    font-size: 12px;
+    position: absolute;
+    top: 3px;
+    right: -7px;
+}
+
+.breadcrumbs .breadcrumb-nav li:last-child {
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumbs .breadcrumb-nav li:last-child::after {
+    display: none;
+}
+
+.breadcrumbs .breadcrumb-nav li,
+.breadcrumbs .breadcrumb-nav li a {
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.breadcrumbs .breadcrumb-nav li i,
+.breadcrumbs .breadcrumb-nav li a i {
+    font-size: 13px;
+    display: inline-block;
+    margin-right: 3px;
+    position: relative;
+    top: -1px;
+}
+
+.breadcrumbs .breadcrumb-nav li a {
+    position: relative;
+}
+
+.breadcrumbs .breadcrumb-nav li a:hover {
+    color: #0167F3;
+}
+
+.section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    position: relative;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+/* Section Title */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0px 300px;
+    position: relative;
+    z-index: 5;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    line-height: 35px;
+    text-transform: capitalize;
+    position: relative;
+    font-weight: 800;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-title h2::before {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    content: "";
+    background-color: #0167F3;
+    height: 2px;
+    width: 50px;
+    margin-left: -25px;
+    border-radius: 2px;
+}
+
+.section-title p {
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .section-title {
+        padding: 0px 250px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .section-title {
+        padding: 0px 20px;
+        margin-bottom: 30px;
+    }
+    .section-title h3 {
+        font-size: 14px;
+    }
+    .section-title h2 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+    .section-title p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-title {
+        padding: 0px 10px;
+        margin-bottom: 25px;
+    }
+    .section-title h3 {
+        font-size: 14px;
+    }
+    .section-title h2 {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 18px;
+    }
+    .section-title p {
+        font-size: 14px;
+    }
+}
+
+.section-title.align-right {
+    padding: 0;
+    padding-left: 600px;
+}
+
+.section-title.align-right h2:before {
+    display: none;
+}
+
+.section-title.align-right h2:after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 50px;
+    background: #0167F3;
+    content: "";
+}
+
+.section-title.align-left {
+    padding: 0;
+    padding-right: 600px;
+}
+
+.section-title.align-left h2:before {
+    left: 0;
+    margin-left: 0;
+}
+
+
+
+
+
+/*======================================
+	Account Login CSS
+========================================*/
+
+.account-login {
+    background-color: #f9f9f9;
+}
+
+.account-login .login-form {
+    padding: 42px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 5px 40px #00000008;
+    box-shadow: 0px 5px 40px #00000008;
+}
+
+@media (max-width: 767px) {
+    .account-login .login-form {
+        padding: 30px;
+    }
+}
+
+.account-login .login-form .card-body {
+    padding: 0;
+}
+
+.account-login .login-form .title {
+    margin-bottom: 30px;
+}
+
+.account-login .login-form .title h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #081828;
+    margin-bottom: 10px;
+}
+
+.account-login .login-form .social-login .btn {
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    display: block;
+    font-weight: 600;
+}
+
+.account-login .login-form .social-login .btn i {
+    display: inline-block;
+    margin-right: 4px;
+    font-size: 15px;
+}
+
+@media (max-width: 767px) {
+    .account-login .login-form .social-login .btn {
+        margin: 6px 0;
+    }
+}
+
+.account-login .login-form .social-login .facebook-btn {
+    border-color: #3b5998;
+    background-color: transparent;
+    color: #3b5998;
+}
+
+.account-login .login-form .social-login .facebook-btn:hover {
+    background-color: #3b5998;
+    border-color: transparent;
+    color: #fff;
+}
+
+.account-login .login-form .social-login .twitter-btn {
+    border-color: #55acee;
+    background-color: transparent;
+    color: #55acee;
+}
+
+.account-login .login-form .social-login .twitter-btn:hover {
+    background-color: #55acee;
+    border-color: transparent;
+    color: #fff;
+}
+
+.account-login .login-form .social-login .google-btn {
+    border-color: #dd4b39;
+    background-color: transparent;
+    color: #dd4b39;
+}
+
+.account-login .login-form .social-login .google-btn:hover {
+    background-color: #dd4b39;
+    border-color: transparent;
+    color: #fff;
+}
+
+.account-login .bottom-content {
+    margin-top: 25px;
+}
+
+.account-login .alt-option {
+    margin: 30px 0;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .account-login .alt-option {
+        margin: 20px 0;
+    }
+}
+
+.account-login .alt-option span {
+    font-size: 14px;
+    background: #fff;
+    color: #888;
+    padding: 5px 15px;
+}
+
+.account-login .alt-option:before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 1px;
+    width: 100%;
+    background: #e6e6e6;
+    content: "";
+    z-index: -1;
+}
+
+.account-login .form-group {
+    margin-bottom: 15px;
+}
+
+.account-login .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.account-login .form-group .form-control {
+    padding: 0 18px;
+    -webkit-transition: color .25s, background-color .25s, border-color .25s;
+    transition: color .25s, background-color .25s, border-color .25s;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    color: #505050;
+    font-size: 14px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 46px;
+    border-radius: 4px !important;
+    overflow: hidden;
+    width: 100%;
+}
+
+.account-login .form-group .form-control:focus {
+    border-color: #0167F3;
+}
+
+.account-login .lost-pass {
+    color: #888;
+}
+
+.account-login .lost-pass:hover {
+    color: #0167F3;
+}
+
+.account-login .button {
+    margin-top: 30px;
+}
+
+.account-login .button .btn {
+    width: 100%;
+}
+
+.account-login .outer-link {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #081828;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.account-login .outer-link a {
+    color: #0167F3;
+}
+
+.account-login .outer-link a:hover {
+    text-decoration: underline;
+}
+
+.button .btn {
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 30px;
+    background-color: #0167F3;
+    color: #fff;
+    border: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    border-radius: 3px;
+    position: relative;
+    z-index: 1;
+    margin-right: 7px;
+    overflow: hidden;
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .button .btn {
+      padding: 12px 25px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .button .btn {
+      padding: 12px 25px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+  .button .btn i {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .button .btn:last-child {
+    margin: 0;
+  }
+  
+  .button .btn:hover {
+    color: #fff;
+    background-color: #081828;
+    -webkit-box-shadow: 0px 4px 4px #0000000f;
+    box-shadow: 0px 4px 4px #0000000f;
+  }
+  
+  .button .btn-alt {
+    background-color: #081828 !important;
+    color: #fff !important;
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .button .btn-alt {
+      padding: 12px 25px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .button .btn-alt {
+      padding: 12px 25px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+  .button .btn-alt:hover {
+    background-color: #0167F3 !important;
+    color: #fff !important;
+  }

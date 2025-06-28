@@ -1,0 +1,109 @@
+<!-- Start Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Registration</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href="index.html"><i class="lni lni-home"></i> Home</a></li>
+                    <li>Registration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Start Account Register Area -->
+<div class="account-login section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+        <div class="register-form">
+          <div class="title">
+            <h3>No Account? Register</h3>
+            <p>Registration takes less than a minute but gives you full control over your orders.</p>
+          </div>
+          <form class="row" (ngSubmit)="onRegister()" #registerForm="ngForm">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-email">E-mail Address</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="reg-email"
+                  [(ngModel)]="email"
+                  name="emailForm"
+                  required
+                  #emailForm="ngModel"
+                  [ngClass]="{'is-invalid': emailForm.invalid && emailForm.touched}"
+                />
+                <div *ngIf="emailForm.invalid && emailForm.touched" class="text-danger">Email is required</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-phone">Username</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="reg-phone"
+                  [(ngModel)]="username"
+                  name="usernameForm"
+                  required
+                  #usernameForm="ngModel"
+                  [ngClass]="{'is-invalid': usernameForm.invalid && usernameForm.touched}"
+                />
+                <div *ngIf="usernameForm.invalid && usernameForm.touched" class="text-danger">Username is required</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-pass">Password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  id="reg-pass"
+                  [(ngModel)]="password"
+                  name="passwordForm"
+                  required
+                  #passwordForm="ngModel"
+                  [ngClass]="{'is-invalid': passwordForm.invalid && passwordForm.touched}"
+                />
+                <div *ngIf="passwordForm.invalid && passwordForm.touched" class="text-danger">Password is required</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-pass-confirm">Confirm Password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  id="reg-pass-confirm"
+                  [(ngModel)]="confirmPassword"
+                  name="confirmPasswordForm"
+                  required
+                  #confirmPasswordForm="ngModel"
+                  [ngClass]="{'is-invalid': confirmPasswordForm.invalid && confirmPasswordForm.touched}"
+                />
+                <div *ngIf="confirmPasswordForm.invalid && confirmPasswordForm.touched" class="text-danger">Confirm Password is required</div>
+              </div>
+            </div>
+            <div class="button">
+              <button class="btn" type="submit" [disabled]="registerForm.invalid">Register</button>
+            </div>
+            <p class="outer-link">Already have an account? <a routerLink="/login">Login Now</a></p>
+            <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- End Account Register Area -->
+

@@ -1,0 +1,26 @@
+<div class="product-grids-head">
+  <div class="single-product">
+    <div class="product-image">
+      <img [src]="product?.imageUrl" alt="Product Image" />
+      <div class="button">
+        <a *ngIf="product?.stock > 0" (click)="buyNow(product.productId)" class="btn"><i class="lni lni-cart"></i> Buy now</a>
+      </div>
+    </div>
+    <div class="product-info">
+      <span class="category">{{ product?.category.name }}</span>
+      <span class="category">{{ product?.condition }}</span>
+      <h4 class="title">
+        <a [routerLink]="['/product-details', product?.productId]">{{ product?.name }}</a>
+      </h4>
+      <div class="price">
+        <span>${{ product?.price }}</span>
+      </div>
+    </div>
+    <div class="button">
+      <a *ngIf="product?.stock > 0" class="btn" (click)="addToCart(product.productId)">
+        <i class="lni lni-cart"></i> Add to cart
+      </a>
+      <span *ngIf="product?.stock === 0"  class="out-of-stock" >Out of Stock</span>
+    </div>
+  </div>
+</div>
