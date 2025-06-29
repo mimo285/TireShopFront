@@ -115,7 +115,7 @@ export class CheckoutComponent implements OnInit {
       };
 
       // Call your backend Stripe checkout session endpoint
-      fetch('http://localhost:5110/api/StripeCheckout/create-checkout-session', {
+      fetch('https://tireshopback.onrender.com/api/StripeCheckout/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(checkoutRequest)

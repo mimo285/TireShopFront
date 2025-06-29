@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RecommendationService {
 
-  private apiUrl = 'http://localhost:5110/api/Recommendation/get-recommendation';
+  private apiUrl = 'https://tireshopback.onrender.com/api/Recommendation/get-recommendation';
 
   constructor(private http: HttpClient) { }
 

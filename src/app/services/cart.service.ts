@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://localhost:5110/api/Cart';
+  private apiUrl = 'https://tireshopback.onrender.com/api/Cart';
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   public cartItemCount$ = this.cartItemCountSubject.asObservable(); 
 

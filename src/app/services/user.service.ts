@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:5110/api/user'; 
+  private apiUrl = 'https://tireshopback.onrender.com/api/user'; 
 
   constructor(private http: HttpClient) {}
 

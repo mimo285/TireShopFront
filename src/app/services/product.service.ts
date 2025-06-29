@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:5110/api/Product'; 
+  private apiUrl = 'https://tireshopback.onrender.com/api/Product'; 
 
   constructor(private http: HttpClient) {}
 
