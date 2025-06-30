@@ -35,6 +35,7 @@ export class RegisterComponent {
 
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Passwords do not match';
+      this.toastr.error(this.errorMessage, 'Password Mismatch');
       return;
     }
 

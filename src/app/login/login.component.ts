@@ -29,7 +29,7 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     if ((window as any).google) {
       (window as any).google.accounts.id.initialize({
-        client_id: '16451055425-k42ku1i3r718ciqpkuuuf572tg65bupg.apps.googleusercontent.com', // <-- Replace this with your Google client ID
+        client_id: '16451055425-k42ku1i3r718ciqpkuuuf572tg65bupg.apps.googleusercontent.com',
         callback: this.handleCredentialResponse.bind(this),
       });
 
@@ -37,9 +37,6 @@ export class LoginComponent implements AfterViewInit {
         document.getElementById('google-signin-button'),
         { theme: 'outline', size: 'large' }
       );
-
-      // Optional: To prompt the One Tap UX automatically, uncomment below
-      // (window as any).google.accounts.id.prompt();
     }
   }
 
@@ -60,6 +57,7 @@ export class LoginComponent implements AfterViewInit {
       error: (err) => {
         console.error('Google login backend failed:', err);
         this.errorMessage = 'Google login failed.';
+        this.toastr.error(this.errorMessage, 'Login Error');
       }
     });
   }
@@ -84,6 +82,7 @@ export class LoginComponent implements AfterViewInit {
       error: (error) => {
         console.error('Login failed:', error);
         this.errorMessage = 'Invalid email or password';
+        this.toastr.error(this.errorMessage, 'Login Error');
       }
     });
   }
