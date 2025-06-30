@@ -24,6 +24,15 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {}
 
   onRegister(): void {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(this.email)) {
+      this.errorMessage = 'Please enter a valid email address';
+      this.toastr.error(this.errorMessage, 'Invalid Email');
+      return;
+    }
+
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Passwords do not match';
       return;
